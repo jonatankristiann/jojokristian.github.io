@@ -10,7 +10,7 @@ $result = mysqli_query($conn, $query_sql);
 
 if (mysqli_num_rows($result) > 0) {
     
-    header("Location: dashboard.html");
+    header("Location: index.html");
     echo "Login Berhasil";
 
 } else { 
