@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Serba | Berkat Mandiri</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- feather icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- style css -->
+    <link rel="stylesheet" href="css/online_shop.css">
+
+    <!-- alpine js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- app -->
+    <script src="js/app.js" async></script>
+
+    <!-- midtrans -->
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="SB-Mid-client-qvfDRNkBeLQQ9pAS"></script>
+
+</head>
+
+<body methode="POST">
+    <nav class="navbar" x-data>
+        <a href="#home" class="logo">Berkat <span>Mandiri</span></a>
+        <div class="navbar-nav">
+            <a href="#home">Home</a>
+            <a href="#about">Tentang Kami</a>
+            <a href="#produk">Produk</a>
+            <a href="#kontak">Kontak</a>
+        </div>
+
+        <div class="navbar-extra">
+            <a href="#" id="search-button"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart-button">
+                <i data-feather="shopping-cart"></i>
+                <span class="quantity-item" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+            </a>
+            <a href="#" id="humburger-menu"><i data-feather="menu"></i></a>
+        </div>
+
+        <!-- search start -->
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="search here...">
+            <label for="search-box"><i data-feather="search"></i></label>
+        </div>
+        <!-- search end -->
+
+        <!-- produk section end -->
+        <div class="shopping-cart">
+            <template x-for="(item, index) in $store.cart.items" x-keys="index">
+                <div class="cart-item">
+                    <img :src="`foto_produk/${item.img}`" :alt="item.name">
+                    <div class="item-detail">
+                        <h3 x-text="item.name"></h3>
+                        <div class="item-price">
+                            <span x-text="rupiah(item.price)"></span> &times;
+                            <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                            <span x-text="item.quantity"></span>
+                            <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
+                            <span id="total" x-text="rupiah(item.total)"></span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <h4 x-show="!$store.cart.items.length">Keranjang Anda Kosong</h4>
+            <h2 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h2>
+
+            <div class="form-container" x-show="$store.cart.items.length">
+                <form action="" id="checkoutForm">
+                    <input type="hidden" name="items" x-model="JSON.stringify($store.cart.items)">
+                    <input type="hidden" name="total" x-model="$store.cart.total">
+                    <h5>Detail Customer</h5>
+                    <label for="name">
+                        <span>Nama</span>
+                        <input type="text" name="name" id="name">
+                    </label>
+                    <label for="email">
+                        <span>Email</span>
+                        <input type="email" name="email" id="email">
+                    </label>
+                    <label for="phone">
+                        <span>No HP</span>
+                        <input type="number" name="phone" id="phone" pattern="(\+62|62|0)8[1-9][0-9]{6,9}$"
+                            oninvalid="this.setCustomValidity('Masukan No Telepon Anda')"
+                            oninput="setCustomValidity('')">
+                    </label>
+                    <button class="checkout-button disabled" type="submit" id="checkout-button"
+                        value="Checkout">Checkout</button>
+                </form>
+            </div>
+        </div>
+        <!--  shopping cart item end -->
+    </nav>
+    <!-- navbar end -->
+
+    <!-- hero section start -->
+    <section class="hero" id="home">
+        <main class="content">
+            <h1>Belanja Harian di Warung Berkat Mandiri</h1>
+        </main>
+    </section>
+    <!-- hero section end -->
+
+    <!-- about section start -->
+    <section id="about" class="about">
+        <h1><span>Tentang</span> Kami</h1>
+        <div class="row">
+            <div class="about-img">
+                <img src="foto_web/about.jpg" alt="Tentang Kami">
+            </div>
+            <div class="content">
+                <h3>Kenapa Memilih Membuat Website?</h3>
+                <p>Berkat Mandiri ini merupakan toko elektronik berbasis Website. Kenapa dibuat demikian?
+                    Karena sekarang zaman sudah maju, teknlogi juga sudah berkembang, jadi kami memanfaatkan sosial
+                    media
+                    sebagai platform penjualan, yang dimana bisa diakses oleh semua orang dan semua kalangan tidak untuk
+                    kalangan tertentu saja.
+                </p><br>
+                <p>
+                    Kami juga menggunakan kan sosial media sebagai media untuk mencari keuntungan dan manfaat.
+                    Dengan penjualan secara online ini, kami harap banyak orang mengetahui toko kami ini.
+                    Dengan begitu harapan kami, toko elektronik ini jadi makin berkembang dan ada peningakatan.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- about section end -->
+
+    <!-- produk section strat -->
+    <section class="produk" id="produk" x-data="produk">
+        <h1><span>Produk</span> Kami</h1>
+        <p>Silahkan pilih barang sesuai keinginan anda</p>
+        <div class="row">
+            <template x-for="(item, index) in items" x-keys="index">
+                <div class="produk-card">
+                    <div class="logo-produk">
+                        <a href="#" @click.prevent="$store.cart.add(item)">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <use href="foto_web/feather-sprite.svg#shopping-cart" />
+                            </svg>
+                        </a>
+
+                        <!-- <a href="#" class="item-detail-button">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <use href="foto_web/feather-sprite.svg#eye" />
+                            </svg>
+                            </i></a> -->
+
+                    </div>
+                    <div class="foto-produk">
+                        <img :src="`foto_produk/${item.img}`" :alt="item.name">
+                    </div>
+                    <div class="nama-produk">
+                        <h3 x-text="item.name"></h3>
+                    </div>
+                    <div class="harga-produk">
+                        <span x-text="rupiah(item.price)"></span>
+                    </div>
+            </template>
+        </div>
+    </section>
+    <!-- produk section end -->
+
+    <!-- kontak section start-->
+    <section id="kontak" class="kontak">
+        <h1><span>Hubungi</span> Kami</h1>
+        <p>Isi data diri anda, jika ingin informasi lebih lanjut</p>
+        <div class="row">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3792.4049772873673!2d109.33202121744384!3d-0.02814069999999481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e1d585702f65a13%3A0xfc878ddcfe1b1674!2sKampus%20Widya%20Dharma!5e1!3m2!1sid!2sid!4v1736946635371!5m2!1sid!2sid"></iframe>
+            <form action="">
+                <div class="input-group">
+                    <i data-feather="user"></i>
+                    <input type="text" placeholder="nama lengkap">
+                </div>
+                <div class="input-group">
+                    <i data-feather="mail"></i>
+                    <input type="text" placeholder="email">
+                </div>
+                <div class="input-group">
+                    <i data-feather="phone"></i>
+                    <input type="text" placeholder="no handphone">
+                </div>
+                <button type="submit" class="btn">Kirim</button>
+            </form>
+
+    </section>
+    <!-- kontak section end -->
+
+    <!-- footer start -->
+    <footer>
+        <div class="sosial">
+            <a href="https://www.instagram.com/"><i data-feather="instagram"></i></a>
+            <a href="https://www.facebook.com/"><i data-feather="facebook"></i></a>
+            <a href="mailto:kristianjonatan4@gmail.com"><i data-feather="mail"></i></a>
+        </div>
+
+        <div class="links">
+            <a href="#home">Home</a>
+            <a href="#about">Tentang Kami</a>
+            <a href="#produk">Produk</a>
+            <a href="#kontak">Kontak Kami</a>
+        </div>
+
+        <div class="credit">
+            <p>Create by <a href="">Jonatan Kristian</a> | &copy; 2024</p>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+    <!-- modal box item detail start -->
+    <!-- <div class="modal" id="item-detail">
+        <div class="modal-container">
+            <a href="#" class="close-icons"><i data-feather="x"></i></a>
+            <div class="modal-content">
+                <img src="foto_produk/{}" alt="Produk 1">
+                <div class="produk-content">
+                    <h3>Produk 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloribus quos accusamus iste ab
+                        facere.</p>
+                    <div class="harga-produk">IDR 30K</div>
+                    <a href="#"><i data-feather="shopping-cart"></i><span>Masukan ke keranjang</span></a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- modal box item detail end -->
+
+    <!-- feather icons -->
+    <script>
+        feather.replace();
+    </script>
+
+    <!-- javascript -->
+    <script src="js/online_shop.js"></script>
+</body>
+
+</html>

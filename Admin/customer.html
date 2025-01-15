@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page | Piboo Elektronik</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="customer.html">Customer</a></li>
+                    <li><a href="produk.html">Produk</a></li>
+                    <li><a href="order.html">Pesanan</a></li>
+                    <li><a href="laporan.html">Laporan</a></li>
+                    <br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br>
+                    <li><a href="loginAdmin.html">Log Out</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <h1>Customer</h1>
+                <div class="header-right">
+                    <input type="text" placeholder="Search...">
+                    <div class="profile">
+                        <img src="image/user.jpeg" alt="Profile Picture">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+            <section id="customers" class="customers">
+                <br>
+                <h2>Mengelola Data Customer</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>No Telepon</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Alamat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jonatan Kristian</td>
+                            <td>kristianjonatan4@gmaill.com</td>
+                            <td>085777438126</td>
+                            <td>Laki-laki</td>
+                            <td>Jl. Perintis, Komp. RBk 3, Pontianak</td>
+                        </tr>
+                        <tr>
+                            <td>Delastrada Dian Puspita</td>
+                            <td>dianpuspita1@gmaill.com</td>
+                            <td>087753128705</td>
+                            <td>Perempuan</td>
+                            <td>Jl. Merdeka, Gang. Cendana, Pontianak</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </section>
+            <br>
+            <td><button>Edit</button> <button>Tambah</button> <button>Hapus</button></td>
+        </main>
+    </div>
+</body>
+
+</html>

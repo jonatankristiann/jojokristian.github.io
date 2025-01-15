@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page | Piboo Elektronik</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="customer.html">Customer</a></li>
+                    <li><a href="produk.html">Produk</a></li>
+                    <li><a href="order.html">Pesanan</a></li>
+                    <li><a href="laporan.html">Laporan</a></li>
+                    <br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br>
+                    <li><a href="loginAdmin.html">Log Out</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <h1>Laporan Penjualan</h1>
+                <div class="header-right">
+                    <input type="text" placeholder="Search...">
+                    <div class="profile">
+                        <img src="image/user.jpeg" alt="Profile Picture">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+            <section id="orders" class="orders">
+                <h2>Mengelola Laporan</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Tanggal Penjualan</th>
+                            <th>Barang</th>
+                            <th>Harga Jual</th>
+                            <th>Pembayaran</th>
+                            <th>Harga Pokok Penjualan</th>
+                            <th>Keuntungan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>01 Januari 2024</td>
+                            <td>Tv Polytron </td>
+                            <td>Rp. 3.560.000</td>
+                            <td>Debit</td>
+                            <td>Rp. 3.450.000</td>
+                            <td>Rp. 200.000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>01 Januari 2024</td>
+                            <td>Brankas Elektronik </td>
+                            <td>Rp. 1.050.000</td>
+                            <td>Tunai</td>
+                            <td>Rp. 900.000</td>
+                            <td>Rp. 150.000</td>
+                        </tr>
+                        <!-- Tambahkan -->
+                    </tbody>
+                </table>
+            </section>
+            <td><button>Edit</button> <button>Tambah</button> <button>Hapus</button></td>
+            
+            <br><br>
+
+            <section id="total-penjualan" class="total-penjualan">
+                <table>
+                    <h3>Total Penjualan</h3>
+                    <tr>
+                        <th>Jumlah Produk Terjual</th>
+                        <th>Total Harga Jual</th>
+                        <th>Total Harga Pokok Penjualan</th>
+                        <th>Total Keuntungan</th>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Rp. 4.610.000</td>
+                        <td>Rp. 4.350.000</td>
+                        <td>Rp. 350.000</td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
